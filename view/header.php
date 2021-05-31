@@ -12,4 +12,7 @@
     </head>
     <body>
         <div class="container">
+<?php
+    require 'view/menu.php'
+?>
             <h1>My SQL first steps</h1>
