@@ -14,8 +14,8 @@ try {
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
     );
     $dbh = new PDO($dsn, $user, $pass, $options);
-    var_dump($dbh);
-    echo 'Connexion etablished !';
+    // var_dump($dbh);
+    // echo 'Connexion etablished !';
 } catch (PDOException $e) {
     print "Error !: " . $e->getMessage() . "<br/>";
     die();
@@ -38,8 +38,24 @@ try {
     $req ->setFetchMode(PDO::FETCH_ASSOC);
     $tab = $req->fetchAll();
     $req ->closeCursor();
+?>
 
-    var_dump($tab);
+    
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SQL first steps</title>
+    </head>
+    <body>
+        <h1>My SQL first steps</h1>
+    </body>
+    </html>
+
+<?php
+    // var_dump($tab);
 
     // foreach($tab as $row) {
     //     // print_r($row);
@@ -47,7 +63,7 @@ try {
     // }
     $dbh = null;
     
-    echo 'End of Request !';
+    // echo 'End of Request !';
 } catch (PDOException $e) {
     print "Error !: " . $e->getMessage() . "<br/>";
     die();
