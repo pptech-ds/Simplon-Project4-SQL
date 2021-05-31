@@ -24,21 +24,27 @@ try {
 
 
 try {
-    $tab = $dbh->query('SELECT 
-                            post_title, 
-                            LEFT(post_content, 100), 
-                            post_date, 
-                            display_name  
-                        FROM wp_posts, wp_users
-                        WHERE post_type = "post"
-                            AND post_status = "publish"
-                            AND post_author = wp_users.ID');
+    $query = '  SELECT 
+                    post_title, 
+                    LEFT(post_content, 100) AS post_content_tr, 
+                    post_date, 
+                    display_name  
+                FROM wp_posts, wp_users
+                WHERE post_type = "post"
+                    AND post_status = "publish"
+                    AND post_author = wp_users.ID';
+
+    $req = $dbh->query($query);
+    $req ->setFetchMode(PDO::FETCH_ASSOC);
+    $tab = $req->fetchAll();
+    $req ->closeCursor();
+
     var_dump($tab);
 
-    foreach($tab as $row) {
-        // print_r($row);
-        var_dump($row);
-    }
+    // foreach($tab as $row) {
+    //     // print_r($row);
+    //     var_dump($row);
+    // }
     $dbh = null;
     
     echo 'End of Request !';
