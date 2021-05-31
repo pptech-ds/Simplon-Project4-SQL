@@ -9,10 +9,15 @@ try {
 
     var_dump($dbh);
 
-    $tab = $dbh->query('SELECT * from wp_posts');
+    $tab = $dbh->query('SELECT post_title, LEFT(post_content, 100), post_date  
+                        FROM wp_posts
+                        WHERE post_type = "post"
+                        AND post_status = "publish"');
+    var_dump($tab);
 
     foreach($tab as $row) {
-         print_r($row);
+        // print_r($row);
+        var_dump($row);
     }
     $dbh = null;
     
