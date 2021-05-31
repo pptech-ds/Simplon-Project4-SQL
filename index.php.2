@@ -26,7 +26,6 @@ try {
 try {
     $query = '  SELECT 
                     post_title, 
-                    post_content,
                     LEFT(post_content, 100) AS post_content_tr, 
                     post_date, 
                     display_name  
@@ -59,7 +58,7 @@ try {
 ?>
 
         <h2><?= $row['post_title'] ?></h2>
-        <p><?= $row['post_content'] ?></p>
+        <p><?= $row['post_content_tr'] ?></p>
         <p>Writtent by: <?= $row['display_name'] ?> - Date: <?= $row['post_date'] ?></p>
       
 
@@ -68,7 +67,7 @@ try {
 
 <?php
     }
-    // var_dump($tab);
+    var_dump($tab);
 
     // foreach($tab as $row) {
     //     // print_r($row);
