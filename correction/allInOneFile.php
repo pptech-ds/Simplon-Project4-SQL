@@ -56,7 +56,8 @@ try {
     <body>
 
         <form action="search.php">
-            <input type="text" name="s">
+            <label for="search">Rechercher</label>
+            <input type="text" name="s" id="search">
             <input type="submit" value="Chercher">
         
         </form>
