@@ -1,6 +1,6 @@
 <?php
 
-require 'view/header.php';
+
 require 'view/sqlCon.php';
 require 'view/reqAllPosts.php';
 
@@ -12,6 +12,9 @@ try {
     $tab = $req->fetchAll();
     $req ->closeCursor();
 
+    $pageTitle = 'Home';
+
+    require 'view/header.php';
     require 'view/allPosts.php';
     require 'view/footer.php';
     
@@ -22,4 +25,3 @@ try {
     print "Error !: " . $e->getMessage() . "<br/>";
     die();
 }
-?>

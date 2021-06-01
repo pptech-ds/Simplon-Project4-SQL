@@ -11,4 +11,3 @@ $reqAllPosts = '  SELECT
             AND post_status = "publish"
             AND post_author = wp_users.ID
         ORDER BY post_date DESC';
-?>

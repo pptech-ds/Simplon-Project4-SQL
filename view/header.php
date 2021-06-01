@@ -8,11 +8,11 @@
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://bootswatch.com/5/darkly/bootstrap.min.css">
 
-        <title>SQL first steps</title>
+        <title>SQL first steps - <?= $pageTitle ?></title>
     </head>
     <body>
         <div class="container">
 <?php
     require 'view/menu.php'
 ?>
-            <h1>My SQL first steps</h1>
+            <h1>Posts from my WordPress Database</h1>
