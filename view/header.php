@@ -8,7 +8,7 @@
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://bootswatch.com/5/darkly/bootstrap.min.css">
 
-        <title>SQL first steps - <?= $pageTitle ?></title>
+        <title>Blog - <?= $pageTitle ?></title>
     </head>
     <body>
         <div class="container">

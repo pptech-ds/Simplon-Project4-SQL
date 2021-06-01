@@ -31,10 +31,11 @@ try {
                     LEFT(post_content, 100) AS post_content_tr, 
                     post_date, 
                     display_name  
-                FROM wp_posts, wp_users
+                FROM wp_posts
+                INNER JOIN wp_users ON post_author = wp_users.ID
                 WHERE post_type = "post"
                     AND post_status = "publish"
-                    AND post_author = wp_users.ID
+                    -- AND post_author = wp_users.ID
                     ORDER BY post_date DESC';
 
     $req = $dbh->query($query);
@@ -53,6 +54,15 @@ try {
         <title>SQL first steps</title>
     </head>
     <body>
+
+        <form action="search.php">
+            <input type="text" name="s">
+            <input type="submit" value="Chercher">
+        
+        </form>
+
+
+
         <h1>My SQL first steps</h1>
 
 <?php
