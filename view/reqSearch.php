@@ -14,6 +14,6 @@ FROM wp_posts
 INNER JOIN wp_users ON post_author = wp_users.ID
 WHERE (post_type = "post"
 AND post_status = "publish")
-AND (post_title LIKE "%' . $_GET["s"] . '%"  
-OR post_content LIKE "%' . $_GET["s"] . '%")  
+AND (post_title LIKE :s  
+OR post_content LIKE :s)  
 ORDER BY post_date DESC';

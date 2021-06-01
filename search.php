@@ -10,7 +10,9 @@ require 'view/reqSearch.php';
 try {
     $query = $reqSearch;
 
-    $req = $dbh->query($query);
+    $req = $dbh->prepare($query);
+    $req -> bindValue(':s', '%'.$_GET['s'].'%', PDO::PARAM_STR);
+    $req -> execute();
     $req ->setFetchMode(PDO::FETCH_ASSOC);
     $tab = $req->fetchAll();
     $req ->closeCursor();
