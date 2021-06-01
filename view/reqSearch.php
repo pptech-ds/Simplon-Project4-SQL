@@ -1,8 +1,5 @@
 <?php
-// $post_id = $_GET['id'];
-
-// echo $_GET['id'];
-// die('test');
+// string to check security in search bar: s%") or (2=2) or (post_title like "%s
 
 $reqSearch = 'SELECT 
 wp_posts.ID,
