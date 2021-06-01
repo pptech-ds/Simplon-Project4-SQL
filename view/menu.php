@@ -7,7 +7,7 @@
     <form action="search.php">
         <label for="search">Find</label>
         <input type="text" name="s" id="search">
-        <input type="submit" value="Chercher">
+        <input type="submit" value="Find">
     </form>
   </div>
 </nav>
