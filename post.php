@@ -1,4 +1,8 @@
 <?php
+if(!isset($_GET['id'])) {
+    // die('Parameter requested !');
+    header('location: index.php');
+}
 
 require 'view/header.php';
 require 'view/sqlCon.php';
