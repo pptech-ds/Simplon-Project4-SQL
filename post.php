@@ -2,20 +2,20 @@
 
 require 'view/header.php';
 require 'view/sqlCon.php';
-require 'view/reqOnePost.php';
 
 try {
-    $query = $reqOnePost;
+    $query = '  SELECT post_title, post_content, post_date, display_name  
+                FROM wp_posts, wp_users
+                WHERE post_author = wp_users.ID
+                    AND wp_posts.ID = ' . $_GET["id"];
 
     $req = $dbh->query($query);
     $req ->setFetchMode(PDO::FETCH_ASSOC);
-    $tab = $req->fetchAll();
+    $row = $req->fetch();
     $req ->closeCursor();
 
-    require 'view/allPosts.php';
-?>
-    <h2><a href="index.php">Get Back to main page</a></h2>
-<?php
+    require 'view/onePost.php';
+
     require 'view/footer.php';
     
     $dbh = null;
