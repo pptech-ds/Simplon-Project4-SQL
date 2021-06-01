@@ -1,5 +1,10 @@
 <?php
 
+if(!isset($_GET['s'])) {
+    // die('Parameter requested !');
+    header('location: allInOneFile.php');
+}
+
 $user = 'root';
 $pass = '';
 $dbname = 'pepinieres_baches_2';
@@ -28,15 +33,16 @@ try {
                     wp_posts.ID,
                     post_title, 
                     post_content,
-                    LEFT(post_content, 100) AS post_content_tr, 
                     post_date, 
                     display_name  
                 FROM wp_posts
                 INNER JOIN wp_users ON post_author = wp_users.ID
-                WHERE post_type = "post"
-                    AND post_status = "publish"
-                    -- AND post_author = wp_users.ID
+                WHERE (post_type = "post"
+                    AND post_status = "publish")
+                    AND (post_title LIKE "%' . $_GET["s"] . '%"  
+                    OR post_content LIKE "%' . $_GET["s"] . '%")  
                     ORDER BY post_date DESC';
+    // die($query);
 
     $req = $dbh->query($query);
     $req ->setFetchMode(PDO::FETCH_ASSOC);
@@ -51,7 +57,7 @@ try {
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>All In One File</title>
+        <title>Search Result for <?= $_GET["s"] ?></title>
     </head>
     <body>
 
@@ -64,7 +70,7 @@ try {
 
 
 
-        <h1>My SQL first steps</h1>
+        <h1>Search Result for <?= $_GET["s"] ?></h1>
 
 <?php
     foreach($tab as $row) {
